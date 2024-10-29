@@ -1,0 +1,61 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (use Node 18, which is compatible with Next.js 15)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the Next.js application
+      - name: Build Next.js app
+        run: npm run build
+
+      # Step 5: Log in to Amazon ECR (Elastic Container Registry)
+      - name: Log in to Amazon ECR
+        env:
+          AWS_REGION: us-east-1 # Specify your AWS region here
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+          aws configure set default.region $AWS_REGION
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin YOUR_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+
+            # Step 6: Build and tag the Docker image
+      - name: Build Docker image
+        run: docker build -t depaul-cloud-project .
+
+      - name: Tag and Push Docker image to ECR
+        env:
+          AWS_REGION: us-east-1 # Use your AWS region
+        run: |
+          docker tag depaul-cloud-project:latest YOUR_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/depaul-cloud-project:latest
+          docker push YOUR_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/depaul-cloud-project:latest
+
+            # Step 8: Deploy to Amazon ECS
+      - name: Deploy to ECS
+        env:
+          AWS_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws ecs update-service --cluster YOUR_CLUSTER_NAME --service YOUR_SERVICE_NAME --force-new-deployment
