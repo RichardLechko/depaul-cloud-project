@@ -1,61 +1,40 @@
-name: Build and Deploy
+name: Deploy to AWS
 
 on:
   push:
     branches:
-      - main
+      - main # Change to your main branch if different
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository
-      - name: Check out code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Step 2: Set up Node.js (use Node 18, which is compatible with Next.js 15)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm install
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
 
-      # Step 4: Build the Next.js application
-      - name: Build Next.js app
-        run: npm run build
-
-      # Step 5: Log in to Amazon ECR (Elastic Container Registry)
-      - name: Log in to Amazon ECR
-        env:
-          AWS_REGION: us-east-1 # Specify your AWS region here
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-          aws configure set default.region $AWS_REGION
-          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin YOUR_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
-
-            # Step 6: Build and tag the Docker image
       - name: Build Docker image
-        run: docker build -t depaul-cloud-project .
-
-      - name: Tag and Push Docker image to ECR
-        env:
-          AWS_REGION: us-east-1 # Use your AWS region
         run: |
-          docker tag depaul-cloud-project:latest YOUR_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/depaul-cloud-project:latest
-          docker push YOUR_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/depaul-cloud-project:latest
+          docker build -t depaul-cloud-project .
 
-            # Step 8: Deploy to Amazon ECS
+      - name: Tag Docker image
+        run: |
+          docker tag depaul-cloud-project:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/depaul-cloud-project:latest
+
+      - name: Push Docker image to ECR
+        run: |
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/depaul-cloud-project:latest
+
       - name: Deploy to ECS
-        env:
-          AWS_REGION: us-east-1
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws ecs update-service --cluster YOUR_CLUSTER_NAME --service YOUR_SERVICE_NAME --force-new-deployment
+        uses: aws-actions/ecs-deploy-task-definition@v1
+        with:
+          cluster: ${{ secrets.ECS_CLUSTER_NAME }} # Replace with your ECS cluster name
+          service: ${{ secrets.ECS_SERVICE_NAME }} # Replace with your ECS service name
+          task-definition: ${{ secrets.ECS_TASK_DEFINITION }} # Specify your task definition
+          wait-for-service-stability: true
