@@ -38,7 +38,8 @@ migrations/*
 # Ignore Python virtual environments
 backend/venv/
 backend/.env/
-backend/.venv/
+backend
+/.venv/
 
 
 # Environment files
