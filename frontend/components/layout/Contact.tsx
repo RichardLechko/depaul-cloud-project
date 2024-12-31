@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 const Contact: React.FC = () => {
   return (

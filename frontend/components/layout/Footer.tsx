@@ -5,7 +5,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoVenmo } from "react-icons/io5";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 const Footer: React.FC = () => {
   const scrollToSection = (id: string) => {

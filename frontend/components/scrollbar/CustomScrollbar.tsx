@@ -16,7 +16,6 @@ const CustomScrollbar = forwardRef<any, CustomScrollbarProps>(({ children }, ref
       style={{ maxHeight: "100vh" }}
       autoHide={false}
       className="custom-scrollbar"
-      timeout={100}
     >
       {children}
       <style jsx global>{`
@@ -39,4 +38,5 @@ const CustomScrollbar = forwardRef<any, CustomScrollbarProps>(({ children }, ref
 });
 
 CustomScrollbar.displayName = 'CustomScrollbar';
+
 export default CustomScrollbar;
