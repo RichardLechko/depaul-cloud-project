@@ -1,0 +1,115 @@
+.hero {
+  padding: 10rem 0rem 10rem 0rem;
+  background: $landing-page-bg;
+  font-family: $font-family-navbar-text;
+  .hero-container {
+    width: 70%;
+    margin: auto;
+    .hero-title-and-text {
+      .hero-title {
+        text-align: center;
+        color: $landing-page-h1;
+        font-family: $font-family-navbar-text;
+        font-size: 48px;
+        line-height: 72px;
+        font-weight: 500;
+      }
+      .hero-text {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: $landing-page-p;
+      }
+    }
+    .search-box {
+      margin: 2rem auto auto auto;
+      justify-content: center;
+      display: flex;
+      gap: 8px;
+      
+      .search-input {
+        width: 500px;
+        height: 40px;
+        padding: 0 20px; // Adjusted padding to maintain height
+        border: $landing-page-input-border;
+        background: $landing-page-input;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: $font-family-jet-brains;
+        &::placeholder {
+          font-weight: 400;
+          color: $landing-page-input-placeholder;
+        }
+        &:focus {
+          outline: none;
+          border: none;
+          box-shadow: 0 0 0 1px transparent,
+                     0 0 0 1px rgba(255, 255, 255, 0.05),
+                     0 0 0 2px #00aeff,
+                     0 0 0 3px #a64bf4;
+        }
+      }
+
+      .search-btn {
+        height: 40px;
+        padding: 0 20px; // Adjusted padding to maintain height
+        font-weight: 500;
+        background: $landing-page-submit-bg;
+        color: $landing-page-submit-text;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        cursor: pointer;
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          background: darken($landing-page-submit-bg, 5%);
+        }
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .search-btn,
+      .search-input {
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    .countries {
+      .countries-list {
+        justify-content: center;
+        margin: 1rem auto auto auto;
+        display: flex;
+        gap: 8px;
+        .country-item {
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 20px;
+          text-align: center;
+          border-radius: 4px;
+          background: $landing-page-location-tag-bg;
+          color: $landing-page-location-tag-text;
+          padding: 4px 8px 4px 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border: 1px solid transparent;
+          &:hover {
+            transform: translateY(-2px);
+            background: darken($landing-page-location-tag-bg, 5%);
+            border-color: darken($landing-page-location-tag-bg, 15%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+          }
+          &:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+  }
+}

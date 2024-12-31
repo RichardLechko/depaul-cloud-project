@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+// Colors
+$navbar-background: #fdfdfd;
+$navbar-text: #000000;
+$navbar-login-bg: #000000;
+$navbar-login-text: #f0f0f0;
+
+$landing-page-bg: radial-gradient(
+  100% 100% at 50% 0%,
+  #b594d2 26%,
+  #7532af 52%,
+  #150524 98.5%
+);
+
+$landing-page-h1: rgba(0, 0, 0, 0.63);
+$landing-page-p: rgba(255, 255, 255, 0.48);
+
+$landing-page-input: rgba(231, 231, 228, 0.49);
+$landing-page-input-border: 0.5px solid rgba(214, 214, 214, 1);
+$landing-page-input-placeholder: rgba(255, 255, 255, 0.4);
+
+$landing-page-submit-bg: #000000;
+$landing-page-submit-text: #f0f0f0;
+$landing-page-location-tag-bg: rgba(241, 241, 241, 0.26);
+$landing-page-location-tag-text: rgba(240, 240, 240, 1);
+
+// Typography
+$font-family-base: "GeistVF", sans-serif;
+$font-family-mono: "GeistMonoVF", monospace;
+$font-family-manrope: "Manrope", "Inter", monospace;
+$font-family-dm-sans: "DM Sans", "Inter", monospace;
+$font-family-jet-brains: "JetBrains Mono", "Inter", monospace;
+
+$font-family-navbar-logo: "Lexend", sans-serif;
+$font-family-navbar-text: "Inter", sans-serif;
+
+// Spacing
+$spacing-unit: 8px;
+$container-max-width: 1200px;
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);

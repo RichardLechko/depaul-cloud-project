@@ -1,46 +1,47 @@
 "use client";
-
-import "../styles/globals.css";
-import { Poppins } from "next/font/google";
+import { useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { Provider } from "react-redux";
-import store from "../store";
-import React, { useState } from "react";
-import SignInModal from "@/components/modals/SignInModal";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import Navbar from "@/components/layout/Navbar";
+import CustomScrollbar from "@/components/scrollbar/CustomScrollbar";
+import { Universities } from "@/components/layout/Universities";
+import Services from "@/components/layout/Services";
+import React from "react";
+import "../styles/scss/main.scss";
+import Reviews from "@/components/layout/Reviews";
+import Contact from "@/components/layout/Contact";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleCloseModal = () => setIsModalOpen(false);
-  const handleOpenModal = () => setIsModalOpen(true);
-
   return (
-    <Provider store={store}>
-      <html lang="en">
-        <body className={`${poppins.className} antialiased`}>
-          <Header openSignInModal={handleOpenModal} />
-          <main>
-            {children}
-            <div id="modal-root" />
-          </main>
-          <Footer openSignInModal={handleOpenModal} />
-          <SignInModal
-            isOpen={isModalOpen}
-            onRequestClose={handleCloseModal}
-            onSignInSuccess={handleCloseModal}
-          />
-        </body>
-      </html>
-    </Provider>
+    <html lang="en">
+      <body>
+        <div className="h-screen">
+          <CustomScrollbar>
+            <Navbar />
+            <div id="home">
+              <Header />
+            </div>
+            <div id="explore">
+              <Universities />
+            </div>
+            <div id="resources">
+              <Services />
+            </div>
+            <div id="community">
+              <Reviews />
+            </div>
+            <div id="contact">
+              <Contact />
+            </div>
+            <Footer />
+            <main>{children}</main>
+          </CustomScrollbar>
+        </div>
+      </body>
+    </html>
   );
 }

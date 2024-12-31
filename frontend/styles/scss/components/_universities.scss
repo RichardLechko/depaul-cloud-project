@@ -1,0 +1,234 @@
+.universities {
+  padding: 10rem 2rem;
+  
+  * {
+    font-family: $font-family-navbar-text;
+  }
+  
+  .universities-title {
+    text-align: center;
+    margin-bottom: 5rem;
+    color: #000000;
+    font-size: 32px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+  
+  .universities-container {
+    max-width: 1224px;
+    margin: 0 auto;
+    position: relative;
+    padding: 4px;
+  }
+
+  :global(.carousel) {
+    overflow: visible !important;
+  }
+
+  :global(.carousel-content) {
+    overflow: visible !important;
+  }
+
+  .left-arrow,
+  .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    z-index: 10;
+
+    &:hover {
+      background-color: #f8f8f8;
+      border-color: #666;
+    }
+
+    svg {
+      stroke: #000000;
+      transition: stroke 0.2s ease;
+    }
+
+    &:hover svg {
+      stroke: #666;
+    }
+  }
+
+  .left-arrow {
+    left: -60px;
+  }
+
+  .right-arrow {
+    right: -60px;
+  }
+
+  .embla {
+    overflow: hidden;
+  }
+
+  .university-card {
+    margin: 4px;
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #000000;
+    background: white;
+    max-width: 612px;
+    max-height: 360px;
+    position: relative;
+
+    .university-image-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-width: 250px;
+      min-height: 250px;
+      
+      .university-image {
+        width: 100%;
+        height: auto;
+      }
+
+      .tuition-box {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        background: rgba(242, 242, 242, 1);
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 12px;
+        line-height: 20px;
+        width: 250px;
+        height: 41px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .tuition-label {
+          font-weight: 600;
+          color: #000000;
+          margin: 0;
+        }
+
+        .tuition-value {
+          color: rgba(127, 127, 127, 1);
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+    }
+
+    .university-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      min-width: 0;
+
+      .university-header {
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        width: 100%;
+        min-width: 0;
+        
+
+        .university-name {
+          font-weight: 600;
+          margin: 0 0 0.5rem;
+          font-size: 20px;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
+        }
+
+        .university-location {
+          font-size: 14px;
+          font-weight: 500;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: rgba(127, 127, 127, 1);
+          
+          width: 100%;
+        }
+      }
+
+      .university-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem; 
+        text-align: right;
+        border-bottom: 1px solid rgba(228, 228, 231, 1);
+        margin-bottom: 4rem; 
+
+
+        .stat-item {
+          line-height: 1.4;
+          font-size: 12px;
+
+          .stat-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+          }
+
+          .stat-value {
+            font-weight: 500;
+            color: rgba(127, 127, 127, 1);
+          }
+        }
+      }
+
+      .university-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        
+
+        button {
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: 600;
+          padding: 8px 16px;
+          cursor: pointer;
+          transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .apply-btn {
+          background: #000000;
+          color: #ffffff;
+
+          &:hover {
+            background: #ff4500;
+            color: #ffffff;
+            transform: scale(1.05);
+          }
+        }
+
+        .view-more-btn {
+          border: 1px solid rgba(127, 127, 127, 1);
+          color: #000000;
+
+          &:hover {
+            background: #f0f8ff;
+            border-color: #4682b4;
+            color: #4682b4;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+}
