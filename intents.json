@@ -1,0 +1,66 @@
+{
+    "intents": [
+        {
+            "tag": "greetings",
+            "patterns": [
+                "Hi",
+                "Hello",
+                "Hey there",
+                "How are you?",
+                "What's up?",
+                "Greetings"
+            ],
+            "responses": [
+                "Hello! How can I assist you in finding the best university for you today?",
+                "Hi there! Ready to explore top university options based on your preferences?",
+                "Greetings! I’m here to help you discover universities that match your goals.",
+                "Welcome! Let’s get started on finding the perfect university for you.",
+                "Hey! Tell me a bit about what you’re looking for, and I’ll recommend some great universities."
+            ]
+        },
+        {
+            "tag": "university",
+            "patterns": [
+                "Tell me about universities.",
+                "Which university is best for me based on my interests, location, and budget?",
+                "Suggest some globally top-ranked universities across multiple disciplines.",
+                "Can you provide detailed information about universities, including their rankings, locations, programs, and tuition?",
+                "What are the details of Princeton University, including tuition fees, strengths, weaknesses, and notable alumni?",
+                "What are the details of MIT, including tuition fees, strengths, weaknesses, and notable alumni?",
+                "What are the details of Stanford university, including tuition fees, strengths, weaknesses, and notable alumni?",
+                "What are the details of Harvard university, including tuition fees, strengths, weaknesses, and notable alumni?",
+                "Provide comprehensive information on universities like Harvard, Stanford, or MIT."
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Thanks a lot"
+            ],
+            "responses": [
+                "You're welcome!",
+                "Happy to help!",
+                "Anytime!",
+                "My pleasure!"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "Goodbye",
+                "See you later",
+                "Take care"
+            ],
+            "responses": [
+                "Goodbye!",
+                "See you later!",
+                "Take care!",
+                "Have a great day!"
+            ]
+        }
+    ]
+}
