@@ -62,7 +62,7 @@ const Reviews: React.FC = () => {
         >
           <CarouselContent className="-ml-4">
             {reviewData.map((review, index) => (
-              <CarouselItem key={index} className="pl-4 basis-1/2">
+              <CarouselItem key={index} className="w-full basis-full min-[1024px]:basis-1/2">
                 <div className="review-card">
                   <div className="card-header">
                     <h3 className="card-title">{review.title}</h3>

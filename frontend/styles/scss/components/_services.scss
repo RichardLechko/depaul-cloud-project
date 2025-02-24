@@ -1,18 +1,25 @@
 .services-container {
   background-color: #000000;
-  padding: 80px 40px;
+  
+
+  @include respond-to(start) {
+    padding: 80px 4px;
+  }
 
   * {
       font-family: $font-family-navbar-text;
   }
 
   .services-title {
-    font-size: 32px;
     font-weight: 600;
-    line-height: 20px;
     text-transform: uppercase;
     color: #ffffff;
     text-align: center;
+
+    @include respond-to(start) {
+      font-size: 24px;
+      line-height: 20px;
+    }
   }
 
   .services-grid {
@@ -20,30 +27,72 @@
     margin: 4rem auto auto auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    
+    
+    @include respond-to(start) {
+      grid-template-columns: repeat(1, 1fr);
+      width: 90%;
+      gap: 10px;
+    }
+
+    @include respond-to(sl) {
+      width: 80%;
+    }
+    @include respond-to(lt) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to(ds) {
+      gap: 24px;
+    }
   }
 
   .service-card {
     background-color: #ffffff;
     border-radius: 6px;
-    padding: 24px;
+    
+    @include respond-to(start) {
+      padding: 18px 12px;
+    }
+
+    @include respond-to(sl) {
+      padding: 24px;
+    }
 
     .service-heading {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 20px;
       font-weight: 600;
       line-height: 20px;
       text-transform: uppercase;
+
+      @include respond-to(start) {
+        font-size: 16px;
+      }
+      @include respond-to(sl) {
+        font-size: 18px;
+      }
+      @include respond-to(ds) {
+        font-size: 20px;
+      }
+
     }
 
     .service-text {
-      font-size: 16px;
       font-weight: 400;
       line-height: 24px;
       color: rgba(127, 127, 127, 1);
       margin-top: 16px;
+
+      @include respond-to(start) {
+        font-size: 12px;
+      }
+      @include respond-to(sl) {
+        font-size: 14px;
+      }
+      @include respond-to(ds) {
+        font-size: 16px;
+      }
     }
   }
 }

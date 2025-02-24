@@ -99,58 +99,56 @@ export const Universities: React.FC = () => {
     <div className="universities" id="universities">
       <h2 className="universities-title">UNIVERSITIES</h2>
       <div className="universities-container">
-        <Carousel 
+        <Carousel
           opts={{
             align: "start",
             loop: true,
             skipSnaps: false,
           }}
-          className="w-full overflow-visible"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent>
             {universityData.map((university, index) => (
-              <CarouselItem key={index} className="pl-4 basis-1/2">
-                <div className="university-card-wrapper">
-                  <div className="university-card">
-                    <div className="university-image-container">
-                      <Image
-                        src={university.image}
-                        width={250}
-                        height={250}
-                        alt={`${university.name} campus`}
-                      />
-                      <div className="tuition-box">
-                        <p className="tuition-label">TUITION FEES</p>
-                        <p className="tuition-value">${university.tuition}</p>
+              <CarouselItem key={index} className="w-full basis-full min-[1280px]:basis-1/2">
+                <div className="university-card">
+                  <div className="university-image-container">
+                    <Image
+                      src={university.image}
+                      width={250}
+                      height={250}
+                      alt={`${university.name} campus`}
+                      className="university-image"
+                    />
+                    <div className="tuition-box">
+                      <p className="tuition-label">TUITION FEES</p>
+                      <p className="tuition-value">${university.tuition}</p>
+                    </div>
+                  </div>
+                  <div className="university-content">
+                    <div className="university-header">
+                      <h3 className="university-name">{university.name}</h3>
+                      <p className="university-location">{university.location}</p>
+                    </div>
+                    <div className="university-stats">
+                      <div className="stat-item">
+                        <p className="stat-label">ACCEPTANCE RATE</p>
+                        <p className="stat-value">{university.acceptanceRate}%</p>
+                      </div>
+                      <div className="stat-item">
+                        <p className="stat-label">AVG. PLACEMENT</p>
+                        <p className="stat-value">{university.placement}%</p>
+                      </div>
+                      <div className="stat-item">
+                        <p className="stat-label">AVG. SALARY</p>
+                        <p className="stat-value">${university.salary}</p>
+                      </div>
+                      <div className="stat-item">
+                        <p className="stat-label">AVG. GPA</p>
+                        <p className="stat-value">{university.gpa}</p>
                       </div>
                     </div>
-                    <div className="university-content">
-                      <div className="university-header">
-                        <h3 className="university-name">{university.name}</h3>
-                        <p className="university-location">{university.location}</p>
-                      </div>
-                      <div className="university-stats">
-                        <div className="stat-item">
-                          <p className="stat-label">ACCEPTANCE RATE</p>
-                          <p className="stat-value">{university.acceptanceRate}%</p>
-                        </div>
-                        <div className="stat-item">
-                          <p className="stat-label">AVG. PLACEMENT</p>
-                          <p className="stat-value">{university.placement}%</p>
-                        </div>
-                        <div className="stat-item">
-                          <p className="stat-label">AVG. SALARY</p>
-                          <p className="stat-value">${university.salary}</p>
-                        </div>
-                        <div className="stat-item">
-                          <p className="stat-label">AVG. GPA</p>
-                          <p className="stat-value">{university.gpa}</p>
-                        </div>
-                      </div>
-                      <div className="university-buttons">
-                        <button className="apply-btn">APPLY</button>
-                        <button className="view-more-btn">VIEW MORE</button>
-                      </div>
+                    <div className="university-buttons">
+                      <button className="apply-btn">APPLY</button>
+                      <button className="view-more-btn">VIEW MORE</button>
                     </div>
                   </div>
                 </div>

@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
             </form>
           </div>
         </div>
-        <div className="contact-image-container">
+        <div className="contact-image-container max-[639px]:hidden">
           <Image
             src="/images/contact-astronaut.png"
             alt="Astronaut"

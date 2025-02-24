@@ -1,21 +1,20 @@
 .universities {
-  padding: 10rem 2rem;
-  
+  padding: 10rem 1rem;
+
   * {
     font-family: $font-family-navbar-text;
   }
-  
+
   .universities-title {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     color: #000000;
-    font-size: 32px;
+    font-size: 24px;
     line-height: 20px;
     font-weight: 600;
   }
-  
+
   .universities-container {
-    max-width: 1224px;
     margin: 0 auto;
     position: relative;
     padding: 4px;
@@ -32,20 +31,29 @@
   .left-arrow,
   .right-arrow {
     position: absolute;
-    top: 50%;
+    top: 18%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     border: 1px solid #000;
     border-radius: 50%;
     background: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease;
     z-index: 10;
+
+    @include respond-to(sm) {
+      top: 20%;
+    }
+    @include respond-to(sl) {
+      width: 40px;
+      height: 40px;
+      top: 50%;
+    }
 
     &:hover {
       background-color: #f8f8f8;
@@ -55,6 +63,13 @@
     svg {
       stroke: #000000;
       transition: stroke 0.2s ease;
+      width: 16px;
+      height: 16px;
+
+      @include respond-to(sl) {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     &:hover svg {
@@ -63,11 +78,19 @@
   }
 
   .left-arrow {
-    left: -60px;
+    left: -8px;
+
+    @include respond-to(sl) {
+      left: -10px;
+    }
   }
 
   .right-arrow {
-    right: -60px;
+    right: -8px;
+
+    @include respond-to(sl) {
+      right: -10px;
+    }
   }
 
   .embla {
@@ -75,110 +98,177 @@
   }
 
   .university-card {
-    margin: 4px;
     display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
-    border: 1px solid #000000;
+    flex-direction: column;
     background: white;
-    max-width: 612px;
-    max-height: 360px;
     position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 100%;
+
+    @include respond-to(sl) {
+      flex-direction: row;
+      gap: 2rem;
+      padding: 1.5rem;
+      width: 95%;
+    }
 
     .university-image-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      min-width: 250px;
-      min-height: 250px;
-      
+      width: 90%;
+      margin: auto;
+
+      @include respond-to(sl) {
+        width: 250px;
+        margin: 0;
+        flex-shrink: 0;
+      }
+
       .university-image {
         width: 100%;
         height: auto;
+        border-radius: 8px 8px 0 0;
+
+        @include respond-to(sl) {
+          width: 250px;
+          height: 250px;
+          border-radius: 8px;
+        }
       }
 
       .tuition-box {
-        position: absolute;
-        bottom: 1.5rem;
-        left: 1.5rem;
+        margin-top: 12px;
         background: rgba(242, 242, 242, 1);
         padding: 8px 16px;
         border-radius: 5px;
-        font-size: 12px;
-        line-height: 20px;
-        width: 250px;
-        height: 41px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: 100%;
 
         .tuition-label {
           font-weight: 600;
           color: #000000;
-          margin: 0;
         }
 
         .tuition-value {
           color: rgba(127, 127, 127, 1);
           font-weight: 500;
+        }
+
+        .tuition-label,
+        .tuition-value {
           margin: 0;
+          font-size: 12px;
+          line-height: 16px;
+
+          @include respond-to(lt) {
+            line-height: 24px;
+            font-size: 16px;
+          }
+          @include respond-to(ds) {
+            line-height: 16px;
+            font-size: 12px;
+          }
+          @include respond-to(dl) {
+            line-height: 24px;
+            font-size: 16px;
+          }
         }
       }
     }
 
     .university-content {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      min-width: 0;
+      padding: 16px;
+
+      @include respond-to(sl) {
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        justify-content: space-between;
+      }
 
       .university-header {
-        line-height: 1.5;
         margin-bottom: 1rem;
-        width: 100%;
-        min-width: 0;
-        
 
         .university-name {
           font-weight: 600;
           margin: 0 0 0.5rem;
-          font-size: 20px;
+          font-size: 16px;
           display: block;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          width: 100%;
+
+          @include respond-to(lt) {
+            font-size: 26px;
+          }
+          @include respond-to(ds) {
+            font-size: 16px;
+          }
+          @include respond-to(lt) {
+            font-size: 26px;
+          }
         }
 
         .university-location {
           font-size: 14px;
           font-weight: 500;
+          color: rgba(127, 127, 127, 1);
           display: block;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          color: rgba(127, 127, 127, 1);
-          
-          width: 100%;
+
+          @include respond-to(lt) {
+            font-size: 20px;
+          }
+          @include respond-to(ds) {
+            font-size: 14px;
+          }
+          @include respond-to(lt) {
+            font-size: 20px;
+          }
         }
       }
 
       .university-stats {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1rem; 
+        gap: 1rem;
         text-align: right;
         border-bottom: 1px solid rgba(228, 228, 231, 1);
-        margin-bottom: 4rem; 
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
 
+        @include respond-to(sl) {
+          margin-top: 1rem;
+          column-gap: 1rem;
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+        }
 
         .stat-item {
           line-height: 1.4;
           font-size: 12px;
 
+          @include respond-to(sl) {
+            white-space: nowrap;
+          }
+
+          @include respond-to(lt) {
+            font-size: 16px;
+          }
+          @include respond-to(ds) {
+            font-size: 12px;
+          }
+          @include respond-to(dl) {
+            font-size: 16px;
+          }
+
           .stat-label {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
           }
 
           .stat-value {
@@ -190,20 +280,35 @@
 
       .university-buttons {
         display: flex;
-        gap: 16px;
+        gap: 8px;
         justify-content: flex-end;
-        position: absolute;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        
+
+        @include respond-to(sl) {
+          margin-top: 0;
+          gap: 16px;
+        }
 
         button {
-          font-size: 16px;
+          font-size: 14px;
           line-height: 20px;
           font-weight: 600;
           padding: 8px 16px;
           cursor: pointer;
-          transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+          transition: transform 0.3s ease, background-color 0.3s ease,
+            color 0.3s ease;
+
+          @include respond-to(lt) {
+            font-size: 20px;
+            padding: 12px 20px;
+          }
+          @include respond-to(ds) {
+            font-size: 14px;
+            padding: 8px 16px;
+          }
+          @include respond-to(dl) {
+            font-size: 20px;
+            padding: 12px 20px;
+          }
         }
 
         .apply-btn {

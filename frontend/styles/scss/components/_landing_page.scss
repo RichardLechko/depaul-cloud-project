@@ -2,9 +2,22 @@
   padding: 10rem 0rem 10rem 0rem;
   background: $landing-page-bg;
   font-family: $font-family-navbar-text;
+
+  @include respond-to(start) {
+    padding: 6rem 0 6rem 0;
+  }
   .hero-container {
     width: 70%;
     margin: auto;
+
+    @include respond-to(start) {
+      width: 100%;
+      padding: 0 16px;
+    }
+    @include respond-to(sl) {
+      width: 70%;
+      padding: 0;
+    }
     .hero-title-and-text {
       .hero-title {
         text-align: center;
@@ -13,6 +26,19 @@
         font-size: 48px;
         line-height: 72px;
         font-weight: 500;
+        @include respond-to(start) {
+          font-size: 32px;
+          line-height: 32px;
+          margin-bottom: 1rem;
+        }
+        @include respond-to(sl) {
+          font-size: 40px;
+          line-height: 48px;
+        }
+        @include respond-to(tb) {
+          font-size: 48px;
+          line-height: 48px;
+        }
       }
       .hero-text {
         width: 50%;
@@ -22,6 +48,16 @@
         line-height: 24px;
         font-weight: 400;
         color: $landing-page-p;
+
+        @include respond-to(start) {
+          width: 100%;
+          padding: 0 16px;
+        }
+
+        @include respond-to(dm) {
+          width: 80%;
+          padding: 1rem 0;
+        }
       }
     }
     .search-box {
@@ -29,15 +65,38 @@
       justify-content: center;
       display: flex;
       gap: 8px;
-      
+
+      @include respond-to(start) {
+        flex-direction: column;
+      }
+
+      @include respond-to(lt) {
+        flex-direction: row;
+      }
+      @include respond-to(ds) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 8px;
+        width: fit-content;
+      }
+
       .search-input {
-        width: 500px;
         height: 40px;
-        padding: 0 20px; // Adjusted padding to maintain height
+        padding: 0 20px;
         border: $landing-page-input-border;
         background: $landing-page-input;
         color: rgba(255, 255, 255, 0.6);
         font-family: $font-family-jet-brains;
+
+        @include respond-to(start) {
+          padding: 0 10px;
+        }
+        @include respond-to(ds) {
+          flex: 1;
+          min-width: 500px;
+        }
         &::placeholder {
           font-weight: 400;
           color: $landing-page-input-placeholder;
@@ -45,16 +104,14 @@
         &:focus {
           outline: none;
           border: none;
-          box-shadow: 0 0 0 1px transparent,
-                     0 0 0 1px rgba(255, 255, 255, 0.05),
-                     0 0 0 2px #00aeff,
-                     0 0 0 3px #a64bf4;
+          box-shadow: 0 0 0 1px transparent, 0 0 0 1px rgba(255, 255, 255, 0.05),
+            0 0 0 2px #00aeff, 0 0 0 3px #a64bf4;
         }
       }
 
       .search-btn {
         height: 40px;
-        padding: 0 20px; // Adjusted padding to maintain height
+        padding: 0 20px;
         font-weight: 500;
         background: $landing-page-submit-bg;
         color: $landing-page-submit-text;
@@ -70,6 +127,17 @@
           transform: translateY(0);
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
+        @include respond-to(tb) {
+          width: 50%;
+          margin: auto;
+        }
+        @include respond-to(ds) {
+          flex: 0; 
+          white-space: nowrap;
+          width: auto; 
+          min-width: 175px;
+        }
       }
 
       .search-btn,
@@ -83,8 +151,14 @@
       .countries-list {
         justify-content: center;
         margin: 1rem auto auto auto;
-        display: flex;
-        gap: 8px;
+
+        @include respond-to(start) {
+          width: 100%;
+          padding: 0 10px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+        }
         .country-item {
           font-size: 12px;
           font-weight: 500;

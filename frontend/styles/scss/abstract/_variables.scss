@@ -45,10 +45,16 @@ $container-max-width: 1200px;
 
 // Breakpoints
 $breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
+  start: 0px,
+  xs: 320px,
+  sm: 375px,
+  md: 425px,
+  sl: 640px,
+  tb: 768px,
+  lt: 1024px,
+  ds: 1280px,
+  dm: 1440px,
+  dl: 1560px,
+  dx: 1920px,
+  dw: 2560px
 );

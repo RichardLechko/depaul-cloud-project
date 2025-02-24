@@ -1,17 +1,14 @@
 .reviews-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 4rem 0;
+  margin: 0 auto;
   position: relative;
+  padding: 8rem 4px;
 
   * {
       font-family: $font-family-navbar-text;
   }
 
   .reviews-heading {
-    font-size: 32px;
+    font-size: 24px;
     line-height: 20px;
     color: #000000;
     font-weight: 600;
@@ -22,42 +19,75 @@
   .left-arrow,
   .right-arrow {
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 48px;
-    height: 48px;
-    border: 1px solid #e4e4e7;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #000;
     border-radius: 50%;
     background: #ffffff;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
     z-index: 10;
-    transition: all 0.2s ease-in-out;
+
+    
 
     &:hover {
-      transform: translateY(-50%) translateY(-1px);
-      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+      background-color: #f8f8f8;
+      border-color: #666;
     }
 
-    &:active {
-      transform: translateY(-50%) translateY(1px);
+    svg {
+      stroke: #000000;
+      transition: stroke 0.2s ease;
+      width: 16px;
+      height: 16px;
+
+      @include respond-to(sl) {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:hover svg {
+      stroke: #666;
     }
   }
 
   .left-arrow {
-    left: -24px;
+    left: -10px;
+
+    @include respond-to(sl) {
+      left: 15px;
+    }
+
+    @include respond-to(lt) {
+      left: 10px;
+    }
   }
 
   .right-arrow {
-    right: -24px;
+    right: -10px;
+
+    @include respond-to(sl) {
+      right: 15px;
+    }
+
+    @include respond-to(lt) {
+      right: 10px;
+    }
+  }
+
+  .embla {
+    overflow: hidden;
   }
 
   .reviews-grid {
     width: 100%;
-    max-width: 1200px;
     padding: 0 1rem;
     position: relative;
 
@@ -66,9 +96,19 @@
       border: 1px solid #e4e4e7;
       border-radius: 8px;
       box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
       background: #ffffff;
       height: 100%;
+
+      @include respond-to(sl) {
+        margin: auto;
+        padding: 1.5rem;
+        width: 80%;
+      }
+
+      @include respond-to(lt) {
+        width: 90%;
+      }
 
       .card-header {
         margin-bottom: 1rem;
@@ -97,6 +137,13 @@
           line-height: 24px;
           color: rgba(9, 9, 11, 1);
           margin-bottom: 1rem;
+
+          @include respond-to(start) {
+            font-size: 12px;
+          }
+          @include respond-to(ds) {
+            font-size: 16px;
+          }
         }
       }
 

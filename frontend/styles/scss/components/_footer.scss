@@ -14,7 +14,7 @@ footer {
 
   // Shared link hover effect
   a {
-      cursor:pointer;
+    cursor: pointer;
     position: relative;
     
     &::after {
@@ -41,30 +41,48 @@ footer {
     width: 70%;
     margin: 5rem auto;
     padding: 20px;
-    border-radius: 10px;
+    
+
+    @include respond-to(start) {
+      width: 100%;
+    }
    
     .newsletter-card {
       display: flex;
       align-items: center;
       gap: 20px;
       padding: 64px 92px;
+      
+      @include respond-to(start) {
+        flex-direction: column;
+      }
 
       .newsletter-title {
         font-family: $font-family-dm-sans;
         color: white;
-        font-size: 28px;
         line-height: 36.46px;
         font-weight: 400;
         margin: 0;
         white-space: nowrap;
+
+        @include respond-to(start) {
+          font-size: 22px;
+        }
+        @include respond-to(tb) {
+          font-size: 32px;
+        }
       }
 
       .newsletter-form {
-        flex-grow: 1;
-        
         .input-container {
           position: relative;
           width: 100%;
+          display: flex;
+          
+          @media (max-width: 640px) {
+            flex-direction: column;
+            gap: 15px;
+          }
           
           .newsletter-input {
             font-family: $font-family-jet-brains !important;
@@ -75,18 +93,37 @@ footer {
             padding: 26px 24px !important;
             padding-right: 200px !important;
             font-weight: 400 !important;
-            font-size: 16px !important;
             line-height: 19.09px !important;
             border: none !important;
             color: rgba(0, 0, 0, 0.5) !important;
             min-height: unset !important;
 
+            @include respond-to(start) {
+              font-size: 12px;
+            }
+            @include respond-to(tb) {
+              font-size: 16px;
+            }
+
+            @media (max-width: 640px) {
+              padding: 10px 24px 10px 10px !important;
+            }
+
+            @include respond-to(lt) {
+              min-width: 500px;
+            }
+
             &::placeholder {
               font-weight: 400 !important;
-              font-size: 16px !important;
               line-height: 19.09px !important;
               color: rgba(0, 0, 0, 0.6) !important;
-          }
+              @include respond-to(start) {
+                font-size: 12px;
+              }
+              @include respond-to(tb) {
+                font-size: 16px;
+              }
+            }
 
             &:focus {
               outline: none !important;
@@ -94,7 +131,6 @@ footer {
                    0 0 0 1px rgba(255, 255, 255, 0.05),
                    0 0 0 2px #00aeff,
                    0 0 0 3px #a64bf4;
-
             }
           }
 
@@ -106,7 +142,6 @@ footer {
             background-color: #000000 !important;
             padding: 16px 38px !important;
             border-radius: 4px !important;
-            font-size: 16px !important;
             font-weight: 400 !important;
             font-family: $font-family-dm-sans !important;
             line-height: 20.83px !important;
@@ -118,6 +153,31 @@ footer {
             transition: all 0.3s ease !important;
             height: auto !important;
             min-height: unset !important;
+
+            @include respond-to(start) {
+              outline: 1px solid #c0c0c0;
+              font-size: 12px;
+            }
+
+            @include respond-to(tb) {
+              font-size: 16px;
+            }
+
+            @media (max-width: 640px) {
+              position: relative !important;
+              right: auto !important;
+              top: auto !important;
+              transform: none !important;
+              width: 100% !important;
+
+              &:hover {
+                transform: scale(1.02) !important;
+              }
+              
+              &:active {
+                transform: scale(0.98) !important;
+              }
+            }
             
             &:hover {
               transform: translateY(-50%) scale(1.05) !important;
@@ -144,21 +204,64 @@ footer {
     padding-bottom: 1rem;
     width: 80%;
     margin: 0 auto;
+   
+    @include respond-to(start) {
+      width: 100%;
+    }
+    
+    @include respond-to(lt) {
+      width: 90%;
+    }
+
+    @include respond-to(ds) {
+      width: 70%;
+      max-width: 1400px;
+    }
 
     .footer-nav-wrapper {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       padding-bottom: 30px;
+      position: relative;
       border-bottom: 1px solid rgba(43, 61, 81, 0.2);
+      
+      @include respond-to(lt) {
+        padding-bottom: 40px;
+        border-bottom: none;
+      }
+      
+      &:after {
+        @include respond-to(lt) {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: -20%;
+          width: 140%;
+          height: 1px;
+          background-color: rgba(43, 61, 81, 0.2);
+        }
+      }
 
       .footer-nav {
+        padding-left: 25px;
+        
         .nav-list {
           display: flex;
-          gap: 30px;
+          flex-direction: column;
+          gap: 15px;
           list-style: none;
           padding: 0;
           margin: 0;
+          
+          @include respond-to(sl) {
+            flex-direction: row;
+            gap: 30px;
+          }
+
+          @include respond-to(lt) {
+            gap: 40px;
+          }
 
           .nav-item {
             a {
@@ -168,6 +271,15 @@ footer {
               line-height: 20.83px;
               color: rgba(10, 20, 47, 1);
               text-decoration: none;
+              cursor: pointer;
+
+              @include respond-to(start) {
+                font-size: 14px;
+              }
+
+              @include respond-to(lt) {
+                font-size: 18px;
+              }
             }
           }
         }
@@ -175,14 +287,39 @@ footer {
 
       .social-icons {
         display: flex;
-        gap: 20px;
-        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-end;
+        padding-right: 25px;
+        
+        @include respond-to(sl) {
+          flex-direction: row;
+          
+        }
+
+        @include respond-to(lt) {
+          gap: 30px;
+        }
+        
+        @include respond-to(ds) {
+          gap: 20px;
+        }
 
         .social-link {
           .social-icon {
             width: 24px;
             height: 24px;
             color: rgba(10, 20, 47, 1);
+            
+            @include respond-to(start) {
+              width: 20px;
+              height: 20px;
+            }
+
+            @include respond-to(lt) {
+              width: 32px;
+              height: 32px;
+            }
           }
         }
       }
@@ -190,9 +327,24 @@ footer {
 
     .footer-bottom {
       display: flex;
+      flex-direction: column;
+      gap: 10px;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
+
+      @include respond-to(start) {
+        padding: 20px 0;
+      }
+
+      @include respond-to(sl) {
+        flex-direction: row;
+        gap: 30px;
+        padding: 30px 25px;
+      }
+
+      @include respond-to(lt) {
+        padding: 50px 0;
+      }
 
       .copyright {
         font-family: $font-family-dm-sans;
@@ -201,6 +353,20 @@ footer {
         line-height: 18.23px;
         color: rgba(10, 20, 47, 0.75);
         margin: 0;
+
+        @include respond-to(lt) {
+          font-size: 22px;
+          line-height: 30px;
+        }
+        
+        @include respond-to(ds) {
+          font-size: 16px;
+        }
+        
+        @include respond-to(start) {
+          font-size: 12px;
+          line-height: 16px;
+        }
       }
 
       .brand-name {
@@ -211,11 +377,44 @@ footer {
         line-height: 28px;
         color: #000000;
         margin: 0;
+
+        @include respond-to(lt) {
+          font-size: 36px;
+          line-height: 46px;
+          padding: 16px 42px;
+        }
+        
+        @include respond-to(ds) {
+          font-size: 24px;
+          padding: 12px 30px;
+        }
+        
+        @include respond-to(start) {
+          font-size: 18px;
+          line-height: 24px;
+          padding: 8px 20px;
+        }
       }
 
       .legal-links {
         display: flex;
         gap: 30px;
+
+        @include respond-to(lt) {
+          gap: 60px;
+        }
+        
+        @include respond-to(sl) {
+          padding-right: 25px;
+        }
+        
+        @include respond-to(ds) {
+          gap: 40px;
+        }
+        
+        @include respond-to(sl) {
+          gap: 30px;
+        }
 
         .legal-link {
           font-family: $font-family-dm-sans;
@@ -224,6 +423,20 @@ footer {
           line-height: 18.23px;
           color: rgba(10, 20, 47, 1);
           text-decoration: none;
+
+          @include respond-to(lt) {
+            font-size: 22px;
+            line-height: 30px;
+          }
+          
+          @include respond-to(ds) {
+            font-size: 16px;
+          }
+          
+          @include respond-to(start) {
+            font-size: 12px;
+            line-height: 16px;
+          }
         }
       }
     }
