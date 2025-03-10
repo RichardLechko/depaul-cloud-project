@@ -117,6 +117,7 @@ export const Universities: React.FC = () => {
                       height={250}
                       alt={`${university.name} campus`}
                       className="university-image"
+                      priority={true}
                     />
                     <div className="tuition-box">
                       <p className="tuition-label">TUITION FEES</p>

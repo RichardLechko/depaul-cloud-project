@@ -136,3 +136,35 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Supabase configuration
+SUPABASE_URL='https://mvsixlpemntatamjvyns.supabase.co'
+SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im12c2l4bHBlbW50YXRhbWp2eW5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ0ODE5MjYsImV4cCI6MjA1MDA1NzkyNn0.IPjP3qMKGoTGsjC-FWOh21RadD67nUaCwD2bjSRJBuU'
+
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'login.backends.SupabaseAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Keep Django's default backend
+]
+
+# Add this to your existing settings.py
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'ERROR',
+    },
+    'loggers': {
+        'login': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}

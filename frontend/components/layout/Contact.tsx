@@ -21,43 +21,30 @@ const Contact: React.FC = () => {
             <form className="contact-form">
               <div className="form-row">
                 <div className="form-group">
-                  <Input 
-                    type="text"
-                    placeholder="First Name"
-                  />
+                  <Input type="text" placeholder="First Name" />
                 </div>
                 <div className="form-group">
-                  <Input 
-                    type="text"
-                    placeholder="Last Name"
-                  />
+                  <Input type="text" placeholder="Last Name" />
                 </div>
               </div>
               <div className="form-group">
-                <Input
-                  type="email"
-                  placeholder="Email"
-                />
+                <Input type="email" placeholder="Email" />
               </div>
               <div className="form-group">
-                <Input
-                  type="tel"
-                  placeholder="Phone Number"
-                />
+                <Input type="tel" placeholder="Phone Number" />
               </div>
               <div className="form-group">
-                <Textarea
-                  placeholder="Message"
-                />
+                <Textarea placeholder="Message" />
               </div>
               <Button>
                 Connect
                 <Image
                   src="/images/contact-rocket.png"
                   alt="Rocket"
+                  className="contact-image"
                   width={20}
                   height={20}
-                  className="button-icon"
+                  style={{ width: "20px", height: "20px" }}
                 />
               </Button>
             </form>
@@ -67,9 +54,8 @@ const Contact: React.FC = () => {
           <Image
             src="/images/contact-astronaut.png"
             alt="Astronaut"
-            width={500}
-            height={500}
-            className="contact-image"
+            fill
+            sizes="(max-width: 639px) 0px, 516px"
           />
         </div>
       </div>

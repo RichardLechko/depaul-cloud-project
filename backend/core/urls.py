@@ -26,5 +26,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('contact_us.urls')),  # Include the contact_us URLs under /api/
+    path('api/', include('contact_us.urls')),
+    path('api/auth/', include('login.urls')),
 ]
